@@ -11,6 +11,7 @@ const EXPORT_CONFIG_METADATA_SECTION := "metadata"
 const SETTINGS_FILE := "user://settings.cfg"
 const CONFIG_SETTINGS_SECTION := "settings"
 
+
 func _ready() -> void:
 	print_debug("Global ready")
 	Engine.max_fps = 60
