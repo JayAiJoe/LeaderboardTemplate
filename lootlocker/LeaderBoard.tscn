@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq1x873ad1pxn"]
+
+[ext_resource type="Script" path="res://lootlocker/leaderboards.gd" id="1_gg8f3"]
+
+[node name="leaderboards" type="Node"]
+script = ExtResource("1_gg8f3")

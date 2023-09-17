@@ -13,3 +13,7 @@ func _input(event: InputEvent) -> void:
 func _pause() -> void:
 	$Paused.pause()
 	get_tree().paused = true
+
+
+func _on_end_game_pressed():
+	$ScoreSubmitPanel.show_results()

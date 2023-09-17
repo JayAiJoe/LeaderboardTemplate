@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdnyglk1i1cxl"]
+
+[ext_resource type="Script" path="res://game_src/gameplay.gd" id="1_63lxl"]
+[ext_resource type="Texture2D" uid="uid://bgprycbqd2tbx" path="res://assets/icon.svg" id="2_06e82"]
+[ext_resource type="Theme" uid="uid://71jef1qy2cb2" path="res://assets/main_theme.tres" id="3_lwulp"]
+[ext_resource type="PackedScene" uid="uid://cee5dna3u27jf" path="res://assets/select_sfx.tscn" id="4_7t2r6"]
+[ext_resource type="PackedScene" uid="uid://cko02oljhiby" path="res://paused/paused.tscn" id="5_wfepw"]
+[ext_resource type="PackedScene" uid="uid://b86ek0j7q6hgt" path="res://lootlocker/ScoreSubmitPanel.tscn" id="6_h8pjp"]
+
+[node name="Gameplay" type="Node2D"]
+script = ExtResource("1_63lxl")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(538, 469)
+texture = ExtResource("2_06e82")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="Stack" type="VFlowContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_lwulp")
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Title" type="Label" parent="Control/Stack"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 96
+text = "GAMEPLAY"
+
+[node name="Instructions" type="Label" parent="Control/Stack"]
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Get started with Godot Skeleton by replacing this Gameplay scene with your own."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PauseInstructions" type="Label" parent="Control/Stack"]
+layout_mode = 2
+text = "Press START, P, or ESC to open pause menu."
+horizontal_alignment = 1
+
+[node name="EndGame" type="Button" parent="Control/Stack"]
+layout_mode = 2
+text = "End game"
+
+[node name="SelectSfx" parent="." instance=ExtResource("4_7t2r6")]
+
+[node name="Paused" parent="." instance=ExtResource("5_wfepw")]
+visible = false
+offset_left = 540.0
+offset_top = 960.0
+offset_right = 540.0
+offset_bottom = 960.0
+
+[node name="ScoreSubmitPanel" parent="." instance=ExtResource("6_h8pjp")]
+offset_top = 1920.0
+offset_right = 1080.0
+offset_bottom = 3840.0
+
+[connection signal="pressed" from="Control/Stack/EndGame" to="." method="_on_end_game_pressed"]

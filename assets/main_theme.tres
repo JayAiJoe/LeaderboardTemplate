@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://71jef1qy2cb2"]
+
+[resource]
+Button/font_sizes/font_size = 48
+Label/font_sizes/font_size = 48
+LineEdit/font_sizes/font_size = 48
+VFlowContainer/constants/v_separation = 32
