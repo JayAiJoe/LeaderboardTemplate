@@ -1,10 +1,6 @@
 extends Node
 
-# Use this game API key if you want to test it with a functioning leaderboard
-# "987dbd0b9e5eb3749072acc47a210996eea9feb0"
-var game_API_key = CustomConfig.GAME_API_KEY
-var development_mode = CustomConfig.DEV_MODE
-var leaderboard_key = CustomConfig.LEADERBOARD_KEY
+
 var session_token = ""
 var score = 0
 
@@ -40,11 +36,11 @@ func _authentication_request():
 		player_session_exists = true
 		
 	## Convert data to json string:
-	var data = { "game_key": game_API_key, "game_version": "0.0.0.1", "development_mode": true }
+	var data = { "game_key": CustomConfig.GAME_API_KEY, "game_version": "0.0.0.1", "development_mode": CustomConfig.DEV_MODE }
 	
 	# If a player session already exists, send with the player identifier
 	if(player_session_exists == true):
-		data = { "game_key": game_API_key, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": true }
+		data = { "game_key": CustomConfig.GAME_API_KEY, "player_identifier":player_identifier, "game_version": "0.0.0.1", "development_mode": CustomConfig.DEV_MODE }
 	
 	# Add 'Content-Type' header:
 	var headers = ["Content-Type: application/json"]
@@ -87,7 +83,7 @@ func _on_authentication_request_completed(result, response_code, headers, body):
 
 func _get_leaderboards():
 	
-	var url = "https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/list?count=10"
+	var url = "https://api.lootlocker.io/game/leaderboards/"+CustomConfig.LEADERBOARD_KEY+"/list?count=10"
 	var headers = ["Content-Type: application/json", "x-session-token:"+session_token]
 	
 	# Create a request node for getting the highscore
@@ -137,7 +133,7 @@ func _upload_score(score):
 	add_child(submit_score_http)
 	submit_score_http.request_completed.connect(_on_upload_score_request_completed)
 	# Send request
-	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+leaderboard_key+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
+	submit_score_http.request("https://api.lootlocker.io/game/leaderboards/"+CustomConfig.LEADERBOARD_KEY+"/submit", headers, HTTPClient.METHOD_POST, JSON.stringify(data))
 
 
 func _on_upload_score_request_completed(result, response_code, headers, body) :

@@ -63,8 +63,7 @@ offset_top = -350.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CONTROLS
-Move: WASD | Accept: J | Cancel: K | Pause: P
-Move: Arrow Keys | Accept: Z | Cancel: Z | Pause: Esc
+Move: WASD | Jump: Space
 "
 autowrap_mode = 3
 
@@ -79,7 +78,7 @@ offset_bottom = 502.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "INSTRUCTIONS
-Collect all the things!"
+How to play the game"
 
 [node name="DebugUIStatus" type="Label" parent="." groups=["debug_ui"]]
 visible = false

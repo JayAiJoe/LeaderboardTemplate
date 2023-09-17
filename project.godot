@@ -18,11 +18,11 @@ config/icon="res://assets/icon.svg"
 
 [autoload]
 
+CustomConfig="*res://autloads/CustomConfig.gd"
 Global="*res://autloads/global.gd"
 Sound="*res://autloads/sound.gd"
-LeaderBoard="*res://lootlocker/LeaderBoard.tscn"
 Events="*res://autloads/Events.gd"
-CustomConfig="*res://autloads/CustomConfig.gd"
+LeaderBoard="*res://lootlocker/LeaderBoard.tscn"
 
 [display]
 
